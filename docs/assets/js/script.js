@@ -1,4 +1,3 @@
-
 var searchButton = document.querySelector("#searchBtn");
 
 
@@ -8,11 +7,15 @@ function searchCity(event) {
     event.preventDefault();
 }
 
-console.log(getWeatherData(44.34, 10.99));
+console.log(getWeatherData("Salt Lake City"));
 
-async function getWeatherData(lat, lon) {
-    await fetch("https://api.openweathermap.org/data/2.5/forecast?lat={"+lat+"}&lon={"+lon+"}&appid={"+apiKey+"}")
+async function getWeatherData(cityName) {
+    await fetch("https://api.openweathermap.org/data/2.5/forecast?q={"+cityName+"}&appid={"+apiKey+"}")
     .then(response => {
-        return response.json();
+        if (response.cod != 200) {
+            return response.cod;
+        } else {
+            return response.json();
+        }
     }).catch( console.error() );
 }
