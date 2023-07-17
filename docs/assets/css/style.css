@@ -116,8 +116,8 @@ main section div {
     border: 1px solid black;
     width: 18.55%;
     margin: 5px;
-    height: 130px;
-    padding: 5px;
+    min-height: 100px;
+    padding: 5px 5px 10px 5px;
     box-shadow: 3px 3px gray;
 }
 
