@@ -3,66 +3,46 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+        integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title></title>
 </head>
 
 <body>
-    <header><h1>Weather Dashboard</h1></header>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
     <nav>
-        <h2>Search for a City:</h2>
-        <form>
-            <input id="citySearch" placeholder="Tokyo" />
-            <button id="searchBtn" class="btn">Search</button>
+        <form class="ui-widget" id="citySearch">
+            <label for="citySearch">
+                <h2>Search for a City:</h2>
+            </label>
+            <input id="cityList" placeholder="Enter name of city." />
+            <button id="searchBtn" class="btn" for="cityList">Search</button>
         </form>
 
-        <ul>
-            <li class="btn">Salt Lake City</li>
-            <li class="btn">Yokohama</li>
+        <ul id="searchedList">
+            <!-- Previous Searched Cities, added by JS -->
         </ul>
     </nav>
-    <main>
-        <section class="currentDay">
-            <h2>Salt Lake City (7/14/2023) ⛅︎</h2>
-            <p>Temp: 69°F</p>
-            <p>Wind: 9 MPH</p>
-            <p>Humidity: 44%</p>
+    <main id="weatherDisplay">
+        <section id="spotlightDay">
+            <!-- Spotlight Day(Today) Content -->
         </section>
-        <section class="forecast">
-            <h2>5-Day Forecast:</h2>
-            <div class="nextDay">
-                <h3>7/15/2023 ⛅︎</h3>
-                <p>Temp: 69°F</p>
-                <p>Wind: 9 MPH</p>
-                <p>Humidity: 44%</p>
-            </div>
-            <div class="twoDay">
-                <h3>7/16/2023 ⛅︎</h3>
-                <p>Temp: 69°F</p>
-                <p>Wind: 9 MPH</p>
-                <p>Humidity: 44%</p>
-            </div>
-            <div class="threeDay">
-                <h3>7/17/2023 ⛅︎</h3>
-                <p>Temp: 69°F</p>
-                <p>Wind: 9 MPH</p>
-                <p>Humidity: 44%</p>
-            </div>
-            <div class="fourDay">
-                <h3>7/18/2023 ⛅︎</h3>
-                <p>Temp: 69°F</p>
-                <p>Wind: 9 MPH</p>
-                <p>Humidity: 44%</p>
-            </div>
-            <div class="fiveDay">
-                <h3>7/19/2023 ⛅︎</h3>
-                <p>Temp: 69°F</p>
-                <p>Wind: 9 MPH</p>
-                <p>Humidity: 44%</p>
-            </div>
+        <section id="forecast">
+            <!-- 5Day Forecast Content -->
         </section>
     </main>
     <footer>&copy; Brian Whisler</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"
+        integrity="sha512-q4Xn+ZU2K+dqJPL8a3TiyGsDa31IkR/rLt/w+fy8jLrx8TdXj0dLM1Aq4aPXnOOKxHEya/bD9DePDB2DHm4jJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="./assets/js/config.js"></script>
     <script src="./assets/js/script.js"></script>
