@@ -12,6 +12,8 @@ $(function () {
     renderSearchedCities();
     searchButton.addEventListener("submit", searchForCity);
 
+    getLocation();
+
     // Search City Event listener function
     async function searchForCity(event, storedSearch) {
         if (event) {
@@ -23,9 +25,9 @@ $(function () {
         if (city === "") {
             return;
         }
-        searchInput.value = ""
+        searchInput.value = "";
         var forecastCounter = 0;
-        var currentForecast = ""
+        var currentForecast = "";
 
         // Get weather data, if nothing is found return
         await getWeatherData(city);
@@ -33,7 +35,7 @@ $(function () {
         if (!weatherData) {
             return;
         } else if (weatherData.cod == "404") {
-            return searchInput.value = "City Not Found"
+            return searchInput.value = "City Not Found";
         } else {
             var formattedLocation = weatherData.city.name + ", " + weatherData.city.country;
             searchedCities.indexOf(formattedLocation) === -1 ? searchedCities.push(weatherData.city.name + ", " + weatherData.city.country) : "";
@@ -105,7 +107,14 @@ $(function () {
     async function getWeatherData(cityName) {
         var units = "imperial";
         // If "City Name" is NaN search by name, else search by ID
-        var searchTerm = isNaN(parseInt(cityName)) ? "q=" + cityName : "id=" + cityName;
+        var searchTerm = "";
+        if (!isNaN(parseInt(cityName))) {
+            searchTerm = "id=" + cityName;
+        } else if (cityName.split("=")[0] === "lat") {
+            searchTerm = cityName;
+        } else {
+            searchTerm = "q=" + cityName;
+        }
         console.log(searchTerm);
         await fetch("https://api.openweathermap.org/data/2.5/forecast?" + searchTerm + "&units=" + units + "&appid=" + apiKey)
             .then(response => {
@@ -170,4 +179,17 @@ $(function () {
         minLength: 3,
         delay: 300
     });
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                searchForCity(null, "lat=" + lat + "&lon=" + lon);
+            });
+
+        }
+        else {
+            console.log("No location found");
+        }
+    }
 });
