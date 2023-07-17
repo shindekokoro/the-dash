@@ -134,3 +134,28 @@ footer {
     background-color: lightslategray;
     padding: 5px;
 }
+
+/* Tablet */
+@media screen and (max-width:800px) {
+    body {
+        background-color: black;
+    }
+
+    main section div {
+        margin: 5px 1px 5x 5px !important;
+    }
+}
+
+@media screen and (max-width:400px) {
+    body {
+        background-color: black;
+    }
+
+    main section h2 {
+        font-size: 1px;
+    }
+
+    main section div {
+        margin: 5px 1px 5x 5px !important;
+    }
+}
