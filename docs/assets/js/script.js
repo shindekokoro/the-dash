@@ -67,7 +67,7 @@ $(function () {
     function renderDay(id, day, header, listData) {
         spotlightDay.style.display = "inline";
         forecastContainer.style.display = "flex";
-
+        console.log(header + " " + day);
         // Create the day container inside forecast or spotlight day.
         var container = id === "#spotlightDay" ? document.querySelector(id) : document.createElement("div");
         if (id !== "#spotlightDay") {
@@ -115,7 +115,7 @@ $(function () {
         } else {
             searchTerm = "q=" + cityName;
         }
-        console.log(searchTerm);
+
         await fetch("https://api.openweathermap.org/data/2.5/forecast?" + searchTerm + "&units=" + units + "&appid=" + apiKey)
             .then(response => {
                 return response.json();
@@ -125,14 +125,13 @@ $(function () {
     }
 
     function renderSearchedCities() {
-        console.log(searchedCities);
         searchedCities.forEach((cityName, index) => {
             var li = document.createElement("li");
             li.setAttribute("class", "btn")
             if (index === 0) {
                 searchedList.replaceChildren(li)
             } else {
-                searchedList.appendChild(li);
+                searchedList.insertBefore(li, searchedList.firstChild);
             }
             li.textContent = cityName;
 

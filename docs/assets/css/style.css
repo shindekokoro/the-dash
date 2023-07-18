@@ -146,16 +146,35 @@ footer {
     }
 }
 
-@media screen and (max-width:400px) {
-    body {
-        background-color: black;
-    }
-
-    main section h2 {
-        font-size: 1px;
+@media screen and (max-width:860px) {
+    main section h3 {
+        font-size: 1em;
     }
 
     main section div {
-        margin: 5px 1px 5x 5px !important;
+        width: 31%;
+        /* margin: 5px 2px; */
+        font-size: smaller;
+    }
+}
+
+@media screen and (max-width:720px) {
+    nav {
+        width: 100%;
+        height: auto;
+    }
+
+    nav ul li:nth-child(n+3) {
+        display: none;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    main section div {
+        margin: 5px 2px;
+        width: 31.5%;
+        /* font-size: smaller; */
     }
 }
