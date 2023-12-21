@@ -4,7 +4,7 @@ A simple 5 day weather forecaster, that will store previously searched locations
 
 ## Link/Preview
 
-https://shindekokoro.github.io/the-dash/
+https://the-dash.spinda.dev
 
 <p align="center">
   <a href="https://shindekokoro.github.io/the-dash/"><img src="https://raw.githubusercontent.com/shindekokoro/the-dash/main/the-dash.jpg"></a>
